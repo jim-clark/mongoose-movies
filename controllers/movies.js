@@ -2,8 +2,15 @@ var Movie = require('../models/movie');
 
 module.exports = {
   new: newMovie,
-  create
+  create,
+  index
 };
+
+function index(req, res) {
+  Movie.find({}, function(err, movies) {
+    res.render('movies/index', {movies});
+  });
+}
 
 function create(req, res) {
   // convert nowShowing's checkbox of nothing or "on" to boolean
