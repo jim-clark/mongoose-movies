@@ -3,17 +3,28 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var movieSchema = new Schema({
-  title: String,
+  title: {
+    type: String,
+    required: true
+  },
   releaseYear: {
     type: Number,
-    default: 2000
+    default: function() {
+      return new Date().getFullYear();
+    },
+    min: 1927
   },
-  mpaaRating: String,
+  mpaaRating: {
+    type: String,
+    enum: ['G', 'PG', 'PG-13', 'R']
+  },
   cast: [String],
   nowShowing: {
     type: Boolean,
     default: false
   }
+}, {
+  timestamps: true
 });
 
 // Compile the schema into a model and export it
