@@ -4,10 +4,16 @@ var Schema = mongoose.Schema;
 
 var movieSchema = new Schema({
   title: String,
-  releaseYear: Number,
+  releaseYear: {
+    type: Number,
+    default: 2000
+  },
   mpaaRating: String,
   cast: [String],
-  nowShowing: Boolean
+  nowShowing: {
+    type: Boolean,
+    default: false
+  }
 });
 
 // Compile the schema into a model and export it

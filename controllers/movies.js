@@ -19,13 +19,17 @@ function create(req, res) {
   req.body.cast = req.body.cast.replace(/\s*,\s*/g, ',');
   // split if it's not an empty string
   if (req.body.cast) req.body.cast = req.body.cast.split(',');
+  // remove empty properties
+  for (let key in req.body) {
+    if (req.body[key] === '') delete req.body[key];
+  }
   var movie = new Movie(req.body);
   movie.save(function(err) {
     // one way to handle errors
     if (err) return res.render('movies/new');
     console.log(movie);
     // for now, redirect right back to new.ejs
-    res.redirect('/movies/new');
+    res.redirect('/movies');
   });
 }
 
