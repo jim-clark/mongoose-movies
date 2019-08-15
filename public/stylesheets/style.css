@@ -65,7 +65,7 @@ nav > a.active {
   grid-template-columns: repeat(2, minmax(auto, 22rem));
 }
 
-#new-form * {
+#new-form *, #add-review-form * {
   font-size: 20px;
   padding: 5px;
   border-radius: 5px;
@@ -117,3 +117,14 @@ table td {
   font-weight: bold;
 }
 
+#add-review-form {
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 1rem;
+}
+
+#add-review-form input[type="submit"] {
+  width: 8rem;
+  grid-column: 2 / 3;
+  margin-bottom: 2rem;
+}
