@@ -20,7 +20,12 @@ var movieSchema = new Schema({
     }
   }, mpaaRating: String,
   nowShowing: { type: Boolean, default: false },
-  reviews: [reviewSchema]
+  reviews: [reviewSchema],
+  cast: [{
+    type: Schema.Types.ObjectId,
+    ref: 'Performer'
+  }]
+  // studio: {type: Schema.Types.ObjectId, ref: 'Studio'}
 }, {
   timestamps: true
 });
